@@ -117,7 +117,7 @@ const Login = () => {
               transition={{ duration: 1 }}
             >
               <img
-                src='/loginimg.png'
+                src='/public/loginimg.png'
                 className="w-full h-full max-md:w-4/5 mx-auto block object-cover"
                 alt="Dining Experience"
               />
