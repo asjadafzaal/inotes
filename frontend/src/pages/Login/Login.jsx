@@ -119,7 +119,7 @@ const Login = () => {
               <img
                 src='/public/loginimg.png'
                 className="w-full h-full max-md:w-4/5 mx-auto block object-cover"
-                alt="Dining Experiencecccc"
+                alt="Dining Experience"
               />
             </motion.div>
           </div>
