@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';  // Import Link
 import Navbar2 from '../../components/Navbar2';
 
 const Login = () => {
@@ -103,9 +103,9 @@ const Login = () => {
 
                 <p className="text-sm !mt-8 text-center text-gray-800">
                   Don't have an account{' '}
-                  <a href="/signup" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">
+                  <Link to="/signup" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">
                     Register here
-                  </a>
+                  </Link>
                 </p>
               </form>
             </motion.div>
