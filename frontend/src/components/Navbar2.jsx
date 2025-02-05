@@ -8,7 +8,7 @@ const Navbar2 = () => {
 
                     {/* Logo */}
                     <img
-                        src="src/assets/icon.png"
+                        src="/icon.png"
                         alt="Profile"
                         className="w-10 h-10 rounded-full"
                     />

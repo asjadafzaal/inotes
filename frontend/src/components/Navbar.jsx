@@ -8,7 +8,7 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
-  const [profileImage, setProfileImage] = useState("/src/assets/user.png");
+  const [profileImage, setProfileImage] = useState("/user.png");
   const [userName, setUserName] = useState("User"); // Default name
   const [dragging, setDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -91,7 +91,7 @@ const Navbar = () => {
         <div className="container mx-auto px-6 py-3 flex justify-between items-center">
           {/* Logo Section */}
           <div className="flex items-center space-x-3">
-            <img src="/src/assets/icon.png" alt="Logo" className="w-10 h-10 rounded-full" />
+            <img src="/icon.png" alt="Logo" className="w-10 h-10 rounded-full" />
             <div className="text-2xl font-semibold text-blue-600">INotes</div>
           </div>
 

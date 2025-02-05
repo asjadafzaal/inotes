@@ -25,7 +25,7 @@ const Searchbar = ({ onSearch }) => {
           className="w-full mx-1 pl-12 pr-4 py-2 border border-blue-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500  focus:border-blue-100 text-blue-700"
         />
         <img
-          src="src/assets/searchicon.png"
+          src="/searchicon.png"
           alt="Search Icon"
           className="absolute left-3 top-1/2 transform -translate-y-1/2 h-6 w-6 text-blue-400"
         />

@@ -4,7 +4,7 @@ const Background = () => {
     return (
         <div className="flex flex-col items-center justify-center h-60 bg-white">
             <img
-                src="src/assets/bgnote.png"
+                src="/bgnote.png"
                 alt="background"
                 className="w-40 max-w-sm h-40 object-cover rounded mb-5"
             />
