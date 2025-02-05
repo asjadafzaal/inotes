@@ -177,7 +177,7 @@ const Addnote = () => {
       ) : filteredNotes.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-80">
           <img
-            src="src/assets/notfound.png" 
+            src="/notfound.png" 
             alt="Not Found"
             className="w-28 h-28 mb-4"
           />
