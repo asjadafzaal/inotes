@@ -25,7 +25,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post('https://inotesbackend.vercel.app/api/auth/register', {
+      const response = await axios.post('http://localhost:5000/api/auth/register', {
         name,
         email,
         password,

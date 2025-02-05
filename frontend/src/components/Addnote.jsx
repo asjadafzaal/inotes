@@ -23,7 +23,7 @@ const Addnote = () => {
         const token = getToken();
         if (!token) return;
 
-        const response = await axios.get("https://inotesbackend.vercel.app/api/notes", {
+        const response = await axios.get("http://localhost:5000/api/notes", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -66,7 +66,7 @@ const Addnote = () => {
       if (currentNoteId) {
         // Update note
         const response = await axios.put(
-          `https://inotesbackend.vercel.app/api/notes/${currentNoteId}`,
+          `http://localhost:5000/api/notes/${currentNoteId}`,
           { title: noteTitle, content: noteContent },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -78,7 +78,7 @@ const Addnote = () => {
       } else {
         // Add new note
         const response = await axios.post(
-          "https://inotesbackend.vercel.app/api/notes",
+          "http://localhost:5000/api/notes",
           { title: noteTitle, content: noteContent },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -102,7 +102,7 @@ const Addnote = () => {
       const token = getToken();
       if (!token) return;
 
-      await axios.delete(`https://inotesbackend.vercel.app/api/notes/${id}`, {
+      await axios.delete(`http://localhost:5000/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -127,7 +127,7 @@ const Addnote = () => {
 
       // Send update request to backend
       await axios.put(
-        `https://inotesbackend.vercel.app/api/notes/${id}`,
+        `http://localhost:5000/api/notes/${id}`,
         { isPinned: updatedNote.isPinned },
         { headers: { Authorization: `Bearer ${token}` } }
       );
