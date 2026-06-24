@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Navbar2 from '../../components/Navbar2';
 import axios from 'axios';
+
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000'
+  : 'https://inotesbackend.vercel.app';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -25,7 +30,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post('https://inotesbackend.vercel.app/api/auth/register', {
+      const response = await axios.post(`${API_BASE_URL}/api/auth/register`, {
         name,
         email,
         password,
@@ -130,9 +135,9 @@ const Signup = () => {
               </button>
               <p className="text-gray-800 text-sm mt-6 text-center">
                 Already have an account?{' '}
-                <a href="/" className="text-blue-600 font-semibold hover:underline ml-1">
+                <Link to="/" className="text-blue-600 font-semibold hover:underline ml-1">
                   Login here
-                </a>
+                </Link>
               </p>
             </motion.form>
           </div>

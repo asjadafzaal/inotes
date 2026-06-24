@@ -27,8 +27,9 @@ mongoose
   })
   .then(() => console.log("✅ Connected to MongoDB Atlas"))
   .catch((err) => {
-    console.error("❌ MongoDB Atlas connection error:", err);
-    process.exit(1); // Stop server if connection fails
+    console.error("❌ MongoDB Atlas connection error:", err.message || err);
+    const setupMockDb = require("./middleware/mockDb");
+    setupMockDb();
   });
 
 // ✅ Routes
@@ -40,6 +41,11 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Notes App!");
 });
 
-// ❌ REMOVE `app.listen(PORT)`
-// ✅ Instead, export the app for Vercel
+// ✅ Start Server locally
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+
+// ✅ Export the app for Vercel
 module.exports = app;

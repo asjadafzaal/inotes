@@ -8,6 +8,10 @@ import Background from "./Background";
 import Searchbar from "./Searchbar";
 import { getToken } from "../authService"; // ✅ Import token helper
 
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000'
+  : 'https://inotesbackend.vercel.app';
+
 const Addnote = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [noteTitle, setNoteTitle] = useState("");
@@ -23,7 +27,7 @@ const Addnote = () => {
         const token = getToken();
         if (!token) return;
 
-        const response = await axios.get("https://inotesbackend.vercel.app/api/notes", {
+        const response = await axios.get(`${API_BASE_URL}/api/notes`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -66,7 +70,7 @@ const Addnote = () => {
       if (currentNoteId) {
         // Update note
         const response = await axios.put(
-          `https://inotesbackend.vercel.app/api/notes/${currentNoteId}`,
+          `${API_BASE_URL}/api/notes/${currentNoteId}`,
           { title: noteTitle, content: noteContent },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -78,7 +82,7 @@ const Addnote = () => {
       } else {
         // Add new note
         const response = await axios.post(
-          "https://inotesbackend.vercel.app/api/notes",
+          `${API_BASE_URL}/api/notes`,
           { title: noteTitle, content: noteContent },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -102,7 +106,7 @@ const Addnote = () => {
       const token = getToken();
       if (!token) return;
 
-      await axios.delete(`https://inotesbackend.vercel.app/api/notes/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -127,7 +131,7 @@ const Addnote = () => {
 
       // Send update request to backend
       await axios.put(
-        `https://inotesbackend.vercel.app/api/notes/${id}`,
+        `${API_BASE_URL}/api/notes/${id}`,
         { isPinned: updatedNote.isPinned },
         { headers: { Authorization: `Bearer ${token}` } }
       );

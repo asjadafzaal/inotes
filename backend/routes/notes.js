@@ -32,12 +32,17 @@ router.get("/", authMiddleware, async (req, res) => {
 
 // 🔹 ✅ Update Note
 router.put("/:id", authMiddleware, async (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, isPinned } = req.body;
 
   try {
+    const updateFields = {};
+    if (title !== undefined) updateFields.title = title;
+    if (content !== undefined) updateFields.content = content;
+    if (isPinned !== undefined) updateFields.isPinned = isPinned;
+
     const updatedNote = await Note.findOneAndUpdate(
       { _id: req.params.id, userId: req.user.id }, // ✅ Ensure only the owner's note is updated
-      { title, content },
+      updateFields,
       { new: true }
     );
 
