@@ -5,12 +5,23 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
+app.use(express.json()); // ✅ Parse JSON bodies
+
 const authRoutes = require("./routes/auth"); // Authentication routes
 const notesRoutes = require("./routes/notes"); // Notes routes
 
-// ✅ Middleware
-app.use(express.json());
-app.use(cors()); // Enable CORS for frontend communication
+// ✅ Explicit CORS Middleware
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS,PATCH");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 // ✅ MongoDB Atlas Connection
 const MONGO_URI = process.env.MONGO_URI;
